@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  .light * {
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+  body {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+    font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Tabular numerals for engineering dashboards */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom industrial scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(140, 160, 180, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(140, 160, 180, 0.35);
+}
+
+/* Subtle control room grid / scanline effect */
+.bg-grid-subtle {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+.light .bg-grid-subtle {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+@keyframes star-movement {
+  0% { transform: translate(0%, 0%); }
+  100% { transform: translate(-100%, 0%); }
+}
+
+@keyframes star-movement-reverse {
+  0% { transform: translate(0%, 0%); }
+  100% { transform: translate(100%, 0%); }
+}
+
+.animate-star-movement {
+  animation: star-movement linear infinite;
+}
+
+.animate-star-movement-reverse {
+  animation: star-movement-reverse linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-star-movement,
+  .animate-star-movement-reverse {
+    animation: none !important;
+  }
+}
